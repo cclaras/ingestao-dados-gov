@@ -1,0 +1,15 @@
+resources:
+  jobs:
+    gov_payroll_bronze_ingestion:
+      name: "job_gov_payroll_ingestion"
+      
+      schedule:
+        quartz_cron_expression: "0 0 2 * * ?" 
+        timezone_id: "America/Sao_Paulo"
+        pause_status: "UNPAUSED"
+      
+      tasks:
+        - task_key: "bz_gov_folha_pagamento"
+          notebook_task:
+            notebook_path: "../src/bronze_gov_folha_pagamento.py"
+            source: WORKSPACE
